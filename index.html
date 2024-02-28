@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meme Generator</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <header>
+        <h1 class="logo">LOGO</h1>
+        <button id="gallery-btn" class="header-btn" onclick="toggleMode('gallery')">Gallery</button>
+        <button class="header-btn">Memes</button>
+        <button class="header-btn">About</button>
+    </header>
+
+    <section id="gallery">
+        <input type="text" id="search-bar" placeholder="Search...">
+        <div class="image-gallery">
+            <img src="img/1.jpg" alt="Gallery Image" class="gallery-image" onclick="renderMeme(this)">
+            <img src="img/2.jpg" alt="Gallery Image" class="gallery-image" onclick="renderMeme(this)">
+            <img src="img/3.jpg" alt="Gallery Image" class="gallery-image" onclick="renderMeme(this)">
+            <img src="img/4.jpg" alt="Gallery Image" class="gallery-image" onclick="renderMeme(this)">
+            <img src="img/5.jpg" alt="Gallery Image" class="gallery-image" onclick="renderMeme(this)">
+            <img src="img/6.jpg" alt="Gallery Image" class="gallery-image" onclick="renderMeme(this)">
+            <img src="img/7.jpg" alt="Gallery Image" class="gallery-image" onclick="renderMeme(this)">
+            <img src="img/8.jpg" alt="Gallery Image" class="gallery-image" onclick="renderMeme(this)">
+            <img src="img/9.jpg" alt="Gallery Image" class="gallery-image" onclick="renderMeme(this)">
+            <img src="img/10.jpg" alt="Gallery Image" class="gallery-image" onclick="renderMeme(this)">
+            <img src="img/11.jpg" alt="Gallery Image" class="gallery-image" onclick="renderMeme(this)">
+            <img src="img/12.jpg" alt="Gallery Image" class="gallery-image" onclick="renderMeme(this)">
+            <img src="img/13.jpg" alt="Gallery Image" class="gallery-image" onclick="renderMeme(this)">
+            <img src="img/14.jpg" alt="Gallery Image" class="gallery-image" onclick="renderMeme(this)">
+            <img src="img/15.jpg" alt="Gallery Image" class="gallery-image" onclick="renderMeme(this)">
+            <img src="img/16.jpg" alt="Gallery Image" class="gallery-image" onclick="renderMeme(this)">
+            <img src="img/17.jpg" alt="Gallery Image" class="gallery-image" onclick="renderMeme(this)">
+            <img src="img/18.jpg" alt="Gallery Image" class="gallery-image" onclick="renderMeme(this)">
+        </div>
+    </section>
+
+    <section id="editor-container">
+        <canvas id="editor-canvas" width="400" height="400"></canvas>
+        <div class="editor-console">
+            <button class="editor-btn">@</button>
+            <button class="editor-btn">%</button>
+            <button class="editor-btn">$</button>
+        </div>
+    </section>
+
+    <script src="js/meme.service.js"></script>
+    <script src="js/meme.controller.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>
