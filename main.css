@@ -6,7 +6,7 @@ body {
 header {
     display: flex;
     background: linear-gradient(45deg, #00ced1, #20b2aa);
-    border-radius: 10px;
+    border-radius: 20px;
     /* Coins arrondis */
     padding: 1rem;
     /* Ajoutez une marge interne pour l'esthétique */
@@ -33,6 +33,7 @@ header {
     display: flex;
     flex-wrap: wrap;
     margin: 20px;
+    text-align: center;
 }
 
 .gallery-image {
@@ -41,7 +42,7 @@ header {
     height: auto;
     margin: 10px;
     border: 2px solid transparent;
-    border-radius: 10px;
+    border-radius: 20px;
     /* Coins arrondis */
     transition: border 0.3s;
 }
@@ -55,5 +56,21 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 80vh;
+    margin-top: 50px;
+
+}
+
+.editor-console {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background-color: #00ced1;
+    height: 500px;
+    width: 500px;
+    border-radius: 20px;
+}
+
+canvas {
+    border-radius: 20px; 
+    margin: 50px;
 }

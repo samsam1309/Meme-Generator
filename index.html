@@ -39,13 +39,16 @@
             <img src="img/18.jpg" alt="Gallery Image" class="gallery-image" onclick="renderMeme(this)">
         </div>
     </section>
-
     <section id="editor-container">
-        <canvas id="editor-canvas" width="400" height="400"></canvas>
+        <canvas id="editor-canvas" width="500" height="500"></canvas>
         <div class="editor-console">
-            <button class="editor-btn">@</button>
-            <button class="editor-btn">%</button>
-            <button class="editor-btn">$</button>
+            <input type="text" id="text-input" placeholder="Entrez le texte...">
+            <div class="console-btn">
+                <button id="add-text-btn">Ajouter Texte</button>
+                <button id="clear-text-btn">Effacer Texte</button>
+                <button id="select-text-btn">Sélectionner Texte</button>
+            </div>
+            
         </div>
     </section>
 
