@@ -1,7 +1,4 @@
-// main.js
-
-// Définissez une variable pour suivre le mode actuel
-
+var currentMode = 'gallery';
 
 function toggleMode(mode) {
     // Masquer tous les éléments par défaut

@@ -1,22 +1,33 @@
-"use strict";
-
-// Fonctions liées aux actions de l'utilisateur
-function handleAddTextButtonClick() {
-    const textInput = prompt("Entrez le texte à ajouter à la canvas:");
-    if (textInput) {
-        addTextToCanvas(textInput);
+function handleColorChange() {
+    var fontColorPicker = document.getElementById('font-color-picker');
+    var selectedColor = fontColorPicker.value;
+    
+    // Update the color of the selected line in gMeme
+    var meme = getMeme();
+    if (meme.selectedLineIdx !== null && meme.lines[meme.selectedLineIdx]) {
+        meme.lines[meme.selectedLineIdx].color = selectedColor;
+        renderMeme();
     }
 }
 
-function handleClearTextButtonClick() {
-    clearTextOnCanvas();
+function increaseFontSize() {
+    adjustFontSize(2); // You can adjust the value as needed
 }
 
-function handleSelectTextButtonClick() {
-    selectTextOnCanvas();
+function decreaseFontSize() {
+    adjustFontSize(-2); // You can adjust the value as needed
 }
 
-// Ajoutez des écouteurs d'événements aux boutons
-document.getElementById('add-text-btn').addEventListener('click', handleAddTextButtonClick);
-document.getElementById('clear-text-btn').addEventListener('click', handleClearTextButtonClick);
-document.getElementById('select-text-btn').addEventListener('click', handleSelectTextButtonClick);
+function adjustFontSize(delta) {
+    // Adjust the font size of the selected line in gMeme
+    var meme = getMeme();
+    if (meme.selectedLineIdx !== null && meme.lines[meme.selectedLineIdx]) {
+        meme.lines[meme.selectedLineIdx].size += delta;
+        renderMeme();
+    }
+}
+
+
+function handleDownloadButtonClick() {
+    downloadMeme();
+}

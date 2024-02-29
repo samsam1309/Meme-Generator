@@ -10,7 +10,7 @@
 
 <body>
     <header>
-        <h1 class="logo">LOGO</h1>
+        <h1 class="logo" onclick="toggleMode('gallery')">LOGO</h1>
         <button id="gallery-btn" class="header-btn" onclick="toggleMode('gallery')">Gallery</button>
         <button class="header-btn">Memes</button>
         <button class="header-btn">About</button>
@@ -19,41 +19,53 @@
     <section id="gallery">
         <input type="text" id="search-bar" placeholder="Search...">
         <div class="image-gallery">
-            <img src="img/1.jpg" alt="Gallery Image" class="gallery-image" onclick="renderMeme(this)">
-            <img src="img/2.jpg" alt="Gallery Image" class="gallery-image" onclick="renderMeme(this)">
-            <img src="img/3.jpg" alt="Gallery Image" class="gallery-image" onclick="renderMeme(this)">
-            <img src="img/4.jpg" alt="Gallery Image" class="gallery-image" onclick="renderMeme(this)">
-            <img src="img/5.jpg" alt="Gallery Image" class="gallery-image" onclick="renderMeme(this)">
-            <img src="img/6.jpg" alt="Gallery Image" class="gallery-image" onclick="renderMeme(this)">
-            <img src="img/7.jpg" alt="Gallery Image" class="gallery-image" onclick="renderMeme(this)">
-            <img src="img/8.jpg" alt="Gallery Image" class="gallery-image" onclick="renderMeme(this)">
-            <img src="img/9.jpg" alt="Gallery Image" class="gallery-image" onclick="renderMeme(this)">
-            <img src="img/10.jpg" alt="Gallery Image" class="gallery-image" onclick="renderMeme(this)">
-            <img src="img/11.jpg" alt="Gallery Image" class="gallery-image" onclick="renderMeme(this)">
-            <img src="img/12.jpg" alt="Gallery Image" class="gallery-image" onclick="renderMeme(this)">
-            <img src="img/13.jpg" alt="Gallery Image" class="gallery-image" onclick="renderMeme(this)">
-            <img src="img/14.jpg" alt="Gallery Image" class="gallery-image" onclick="renderMeme(this)">
-            <img src="img/15.jpg" alt="Gallery Image" class="gallery-image" onclick="renderMeme(this)">
-            <img src="img/16.jpg" alt="Gallery Image" class="gallery-image" onclick="renderMeme(this)">
-            <img src="img/17.jpg" alt="Gallery Image" class="gallery-image" onclick="renderMeme(this)">
-            <img src="img/18.jpg" alt="Gallery Image" class="gallery-image" onclick="renderMeme(this)">
+            <img id="img-1" src="img/1.jpg" alt="Gallery Image" class="gallery-image" onclick="selectImage(1)">
+            <img id="img-2" src="img/2.jpg" alt="Gallery Image" class="gallery-image" onclick="selectImage(2)">
+            <img id="img-3" src="img/3.jpg" alt="Gallery Image" class="gallery-image" onclick="selectImage(3)">
+            <img id="img-4" src="img/4.jpg" alt="Gallery Image" class="gallery-image" onclick="selectImage(4)">
+            <img id="img-5" src="img/5.jpg" alt="Gallery Image" class="gallery-image" onclick="selectImage(5)">
+            <img id="img-6" src="img/6.jpg" alt="Gallery Image" class="gallery-image" onclick="selectImage(6)">
+            <img id="img-7" src="img/7.jpg" alt="Gallery Image" class="gallery-image" onclick="selectImage(7)">
+            <img id="img-8" src="img/8.jpg" alt="Gallery Image" class="gallery-image" onclick="selectImage(8)">
+            <img id="img-9" src="img/9.jpg" alt="Gallery Image" class="gallery-image" onclick="selectImage(9)">
+            <img id="img-10" src="img/10.jpg" alt="Gallery Image" class="gallery-image" onclick="selectImage(10)">
+            <img id="img-11" src="img/11.jpg" alt="Gallery Image" class="gallery-image" onclick="selectImage(11)">
+            <img id="img-12" src="img/12.jpg" alt="Gallery Image" class="gallery-image" onclick="selectImage(12)">
+            <img id="img-13" src="img/13.jpg" alt="Gallery Image" class="gallery-image" onclick="selectImage(13)">
+            <img id="img-14" src="img/14.jpg" alt="Gallery Image" class="gallery-image" onclick="selectImage(14)">
+            <img id="img-15" src="img/15.jpg" alt="Gallery Image" class="gallery-image" onclick="selectImage(15)">
+            <img id="img-16" src="img/16.jpg" alt="Gallery Image" class="gallery-image" onclick="selectImage(16)">
+            <img id="img-17" src="img/17.jpg" alt="Gallery Image" class="gallery-image" onclick="selectImage(17)">
+            <img id="img-18" src="img/18.jpg" alt="Gallery Image" class="gallery-image" onclick="selectImage(18)">
         </div>
     </section>
     <section id="editor-container">
         <canvas id="editor-canvas" width="500" height="500"></canvas>
         <div class="editor-console">
-            <input type="text" id="text-input" placeholder="Entrez le texte...">
+            <input type="text" id="text-input" placeholder="Entrez votre texte..." onchange="handleTextInputChange()">
             <div class="console-btn">
-                <button id="add-text-btn">Ajouter Texte</button>
-                <button id="clear-text-btn">Effacer Texte</button>
-                <button id="select-text-btn">Sélectionner Texte</button>
+                <button id="add-text-btn" onclick="addText()">Ajouter Texte</button>
+                <button id="clear-text-btn">🗑 Clear</button>
+                <button id=select-text-btn onclick="toggleLine()">Changer de Ligne</button>
             </div>
-            
+            <div class="adjust-btn">
+                <input type="color" id="font-color-picker" value="#ffffff" onclick="handleColorChange()">
+                <button id="increase-font-btn" onclick="adjustFontSize(4)">Increase Font</button>
+                <button id="decrease-font-btn" onclick="adjustFontSize(-4)">Decrease Font</button>
+            </div>
+
+            <div class="export-btn">
+                <button id="download-btn" onclick="handleDownloadButtonClick()">Télécharger</button>
+                <button id="share-btn">Share</button>
+            </div>
+
         </div>
     </section>
 
     <script src="js/meme.service.js"></script>
     <script src="js/meme.controller.js"></script>
+    <script src="js/editor.service.js"></script>
+    <script src="js/editor.controller.js"></script>
     <script src="js/main.js"></script>
 
 </body>
