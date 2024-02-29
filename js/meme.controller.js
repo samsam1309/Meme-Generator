@@ -1,37 +1,29 @@
 function selectImage(imgId) {
-    // Update selectedImgId in gMeme
     gMeme.selectedImgId = imgId;
-
-    // Call renderMeme to render the selected image
     renderMeme();
 }
 
-// Add these variables to your existing code
-// Add the showBorder property to gMeme
 var gMeme = {
     selectedImgId: null,
     lines: [
-        { txt: '', size: 20, color: 'black', yPos: 50 }, // First line
-        { txt: '', size: 20, color: 'black', yPos: 450 } // Second line
+        { txt: '', size: 20, color: 'black', yPos: 50 },
+        { txt: '', size: 20, color: 'black', yPos: 450 } 
     ],
     selectedLineIdx: 0,
-    showBorder: true // Add this line
+    showBorder: true 
 };
 
 
 function getMeme() {
     return gMeme;
 }
-// ... (votre code existant)
 
-// Ajoutez cette fonction à votre script
 function toggleBorder() {
     var meme = getMeme();
-    meme.showBorder = !meme.showBorder; // Inversez l'état actuel de la bordure
+    meme.showBorder = !meme.showBorder; 
     renderMeme();
 }
 
-// Modifiez la fonction renderMeme pour prendre en compte l'état de la bordure
 function renderMeme() {
     var meme = getMeme();
     console.log("meme", meme);
@@ -48,17 +40,13 @@ function renderMeme() {
             context.fillStyle = line.color;
             context.textAlign = line.align || 'center';
 
-            // Adjust the Y-coordinate based on the position of the line
             if (line.yPos === 450) {
-                // For the second line, adjust the Y-coordinate
                 context.fillText(line.txt, canvas.width / 2, canvas.height - 20);
             } else {
-                // For the first line, use the provided Y-coordinate
                 context.fillText(line.txt, canvas.width / 2, line.yPos);
             }
 
             if (meme.showBorder && meme.selectedLineIdx !== null && meme.selectedLineIdx === index) {
-                // Draw a dashed border around the text area only when the line is selected and showBorder is true
                 context.strokeStyle = 'white';
                 context.lineWidth = 2;
                 context.setLineDash([5, 3]);
@@ -75,19 +63,15 @@ function renderMeme() {
 }
 
 
-// ... (autres fonctions existantes)
 
 function toggleLine() {
     var meme = getMeme();
 
-    // Basculer entre les lignes lorsqu'on appuie sur le bouton
     meme.selectedLineIdx = (meme.selectedLineIdx === 0) ? 1 : 0;
 
-    // Mettez à jour le champ de texte avec le texte de la ligne sélectionnée
     var textInput = document.getElementById('text-input');
     textInput.value = meme.lines[meme.selectedLineIdx] ? meme.lines[meme.selectedLineIdx].txt : '';
 
-    // Appelez renderMeme pour mettre à jour le canevas avec la ligne sélectionnée
     renderMeme();
 }
 
@@ -109,7 +93,6 @@ function updateText() {
         meme.selectedLineIdx = meme.lines.length - 1;
     }
 
-    // Appelez renderMeme pour mettre à jour le canevas avec le nouveau texte
     renderMeme();
 }
 
@@ -123,12 +106,10 @@ function addText() {
 }
 
 
-// Ajoutez ceci dans votre code JavaScript
 var canvas = document.getElementById('editor-canvas');
 canvas.addEventListener('click', handleCanvasClick);
 
 
-// Ajoutez cette fonction dans votre code JavaScript
 function handleCanvasClick(event) {
     var meme = getMeme();
     var canvas = document.getElementById('editor-canvas');
@@ -136,27 +117,23 @@ function handleCanvasClick(event) {
     var clickX = event.clientX - canvasRect.left;
     var clickY = event.clientY - canvasRect.top;
 
-    // Parcourez les lignes du meme pour voir si le clic est à proximité d'une ligne
     for (var i = 0; i < meme.lines.length; i++) {
         var line = meme.lines[i];
         var textWidth = context.measureText(line.txt).width;
         var textHeight = line.size;
 
-        // Vérifiez si le clic est dans les limites du texte de la ligne
         if (
             clickX >= canvas.width / 2 - textWidth / 2 &&
             clickX <= canvas.width / 2 + textWidth / 2 &&
             clickY >= line.yPos - textHeight &&
             clickY <= line.yPos
         ) {
-            // Sélectionnez cette ligne si le clic est sur le texte
             meme.selectedLineIdx = i;
             renderMeme();
             return;
         }
     }
 
-    // Si le clic ne se trouve à proximité d'aucune ligne existante, désélectionnez la ligne
     meme.selectedLineIdx = null;
     renderMeme();
 }

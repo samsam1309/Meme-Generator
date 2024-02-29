@@ -19,7 +19,6 @@ var gImgs = [
     { id: 16, url: 'img/16.jpg', keywords: ['humor', 'baby'] },
     { id: 17, url: 'img/17.jpg', keywords: ['humor', 'baby'] },
     { id: 18, url: 'img/18.jpg', keywords: ['humor', 'baby'] },
-    // ... Ajoutez les objets pour les 15 autres images
 ];
 
 
