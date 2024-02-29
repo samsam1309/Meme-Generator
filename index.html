@@ -10,7 +10,7 @@
 
 <body>
     <header>
-        <h1 class="logo" onclick="toggleMode('gallery')">LOGO</h1>
+        <h1 class="logo" onclick="toggleMode('gallery')">Meme Generator <i class="fa-solid fa-gamepad"></i></h1>
         <button id="gallery-btn" class="header-btn" onclick="toggleMode('gallery')">Gallery</button>
         <button class="header-btn">Memes</button>
         <button class="header-btn">About</button>
@@ -45,34 +45,44 @@
             <input type="text" id="text-input" placeholder="Entrez votre texte..." onchange="handleTextInputChange()">
             <div class="console-btn">
                 <button id="add-text-btn" onclick="addText()"><i class="fa-solid fa-plus"></i></button>
-                <button id="clear-text-btn"><i class="fa-solid fa-trash"></i></button>
+                <button id="clear-text-btn" onclick="deleteLine()"><i class="fa-solid fa-trash"></i></button>
                 <button id=select-text-btn onclick="toggleLine()"><i class="fa-solid fa-arrows-up-down"></i></button>
             </div>
             <div class="adjust-btn">
                 <input type="color" id="font-color-picker" value="#ffffff" onclick="handleColorChange()">
-                <button id="increase-font-btn" onclick="adjustFontSize(4)">Increase Font</button>
-                <button id="decrease-font-btn" onclick="adjustFontSize(-4)">Decrease Font</button>
-                <button id="toggle-border-btn" onclick="toggleBorder()">Toggle Border</button>
+                <div class="font-size">
+                    <button class="font-btn" id="increase-font-btn" onclick="adjustFontSize(4)">Increase Font</button>
+                    <button class="font-btn" id="decrease-font-btn" onclick="adjustFontSize(-4)">Decrease Font</button>
+                    <button class="font-btn" id="toggle-border-btn" onclick="toggleBorder()"><i class="fa-solid fa-ban"></i></button>
+                </div>
+                
                 <div class="font-controls">
-                    <select id="font-family" onchange="handleFontFamilyChange()">
+                    <select class="font-btn" id="font-family" onchange="handleFontFamilyChange()">
                         <option value="Arial">Arial</option>
                         <option value="Verdana">Verdana</option>
                         <!-- Ajoutez d'autres polices si nécessaire -->
                     </select>
-                    <input type="number" id="font-size" value="20" min="10" max="100" onchange="handleFontSizeChange()">
-                    <button onclick="alignText('left')">Right</button>
-                    <button onclick="alignText('center')">Center</button>
-                    <button onclick="alignText('right')">Left</button>
+                    <input type="number" class="font-btn" id="font-size" value="20" min="10" max="100" onchange="handleFontSizeChange()">
+                    <button class="font-btn" onclick="alignText('left')"><i class="fa-solid fa-align-left"></i></button>
+                    <button class="font-btn" onclick="alignText('center')"><i class="fa-solid fa-align-center"></i></button>
+                    <button class="font-btn" onclick="alignText('right')"><i class="fa-solid fa-align-right"></i></button>
                 </div>
             </div>
 
             <div class="export-btn">
-                <button id="download-btn" onclick="handleDownloadButtonClick()">Télécharger</button>
-                <button id="share-btn">Share</button>
+                <button class="download-btn" onclick="handleDownloadButtonClick()">Télécharger</button>
+                <button class="share-btn">Share</button>
+                <button id="save-meme-btn" onclick="saveMeme()">Save Meme</button>
             </div>
 
         </div>
     </section>
+
+    <section id="saved-memes" style="display: none;">
+        <!-- Contenu de la galerie de mèmes sauvegardés -->
+        <!-- Vous allez probablement remplir cette section dynamiquement avec JavaScript -->
+    </section>
+    
 
     <script src="https://kit.fontawesome.com/4a09df90af.js" crossorigin="anonymous"></script>
     <script src="js/meme.service.js"></script>

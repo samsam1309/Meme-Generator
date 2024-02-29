@@ -160,3 +160,4 @@ function handleCanvasClick(event) {
     meme.selectedLineIdx = null;
     renderMeme();
 }
+
