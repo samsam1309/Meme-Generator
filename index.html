@@ -44,14 +44,26 @@
         <div class="editor-console">
             <input type="text" id="text-input" placeholder="Entrez votre texte..." onchange="handleTextInputChange()">
             <div class="console-btn">
-                <button id="add-text-btn" onclick="addText()">Ajouter Texte</button>
-                <button id="clear-text-btn">🗑 Clear</button>
-                <button id=select-text-btn onclick="toggleLine()">Changer de Ligne</button>
+                <button id="add-text-btn" onclick="addText()"><i class="fa-solid fa-plus"></i></button>
+                <button id="clear-text-btn"><i class="fa-solid fa-trash"></i></button>
+                <button id=select-text-btn onclick="toggleLine()"><i class="fa-solid fa-arrows-up-down"></i></button>
             </div>
             <div class="adjust-btn">
                 <input type="color" id="font-color-picker" value="#ffffff" onclick="handleColorChange()">
                 <button id="increase-font-btn" onclick="adjustFontSize(4)">Increase Font</button>
                 <button id="decrease-font-btn" onclick="adjustFontSize(-4)">Decrease Font</button>
+                <button id="toggle-border-btn" onclick="toggleBorder()">Toggle Border</button>
+                <div class="font-controls">
+                    <select id="font-family" onchange="handleFontFamilyChange()">
+                        <option value="Arial">Arial</option>
+                        <option value="Verdana">Verdana</option>
+                        <!-- Ajoutez d'autres polices si nécessaire -->
+                    </select>
+                    <input type="number" id="font-size" value="20" min="10" max="100" onchange="handleFontSizeChange()">
+                    <button onclick="alignText('left')">Right</button>
+                    <button onclick="alignText('center')">Center</button>
+                    <button onclick="alignText('right')">Left</button>
+                </div>
             </div>
 
             <div class="export-btn">
@@ -62,6 +74,7 @@
         </div>
     </section>
 
+    <script src="https://kit.fontawesome.com/4a09df90af.js" crossorigin="anonymous"></script>
     <script src="js/meme.service.js"></script>
     <script src="js/meme.controller.js"></script>
     <script src="js/editor.service.js"></script>

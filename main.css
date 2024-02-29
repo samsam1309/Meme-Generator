@@ -83,17 +83,29 @@ canvas {
 }
 
 #add-text-btn {
-    background-color: rgb(10, 233, 10);
+    background-color: #33f733;
     color: white;
+    height: 60px;
+    width: 50px;
+    margin: 10px;
+    border-radius: 10px;
 }
 
 #clear-text-btn {
-    background-color: rgb(233, 10, 10);
+    background-color: #fc2c4c;
     color: white;
+    height: 60px;
+    width: 50px;
+    margin: 10px;
+    border-radius: 10px;
 }
 #select-text-btn {
-    background-color: rgb(10, 140, 233);
+    background-color: #2dc4f7;
     color: white;
+    height: 60px;
+    width: 50px;
+    margin: 10px;
+    border-radius: 10px;
 }
 
 .adjust-btn {
@@ -106,6 +118,8 @@ canvas {
     border-radius: 20px;
     margin: 20px;
 }
+
+
 
 @media screen and (max-width: 740px) {
     #editor-container {

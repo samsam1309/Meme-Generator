@@ -31,3 +31,40 @@ function adjustFontSize(delta) {
 function handleDownloadButtonClick() {
     downloadMeme();
 }
+
+
+function handleFontFamilyChange() {
+    var fontFamilySelect = document.getElementById('font-family');
+    var selectedFontFamily = fontFamilySelect.value;
+    setFontFamily(selectedFontFamily);
+}
+
+function handleFontSizeChange() {
+    var fontSizeInput = document.getElementById('font-size');
+    var selectedFontSize = parseInt(fontSizeInput.value);
+    setFontSize(selectedFontSize);
+}
+
+function alignText(align) {
+    var meme = getMeme();
+    if (meme.selectedLineIdx !== null && meme.lines[meme.selectedLineIdx]) {
+        meme.lines[meme.selectedLineIdx].align = align;
+        renderMeme();
+    }
+}
+
+function setFontFamily(fontFamily) {
+    var meme = getMeme();
+    if (meme.selectedLineIdx !== null && meme.lines[meme.selectedLineIdx]) {
+        meme.lines[meme.selectedLineIdx].fontFamily = fontFamily;
+        renderMeme();
+    }
+}
+
+function setFontSize(fontSize) {
+    var meme = getMeme();
+    if (meme.selectedLineIdx !== null && meme.lines[meme.selectedLineIdx]) {
+        meme.lines[meme.selectedLineIdx].size = fontSize;
+        renderMeme();
+    }
+}
