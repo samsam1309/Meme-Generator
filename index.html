@@ -12,7 +12,7 @@
     <header>
         <h1 class="logo" onclick="toggleMode('gallery')">Meme Generator <i class="fa-solid fa-gamepad"></i></h1>
         <button id="gallery-btn" class="header-btn" onclick="toggleMode('gallery')">Gallery</button>
-        <button class="header-btn">Memes</button>
+        <button class="header-btn" onclick="toggleMode('memes')">Memes</button>
         <button class="header-btn">About</button>
     </header>
 
@@ -58,10 +58,17 @@
                 
                 <div class="font-controls">
                     <select class="font-btn" id="font-family" onchange="handleFontFamilyChange()">
+                        <option value="Impact">Impact</option>
                         <option value="Arial">Arial</option>
                         <option value="Verdana">Verdana</option>
-                        <!-- Ajoutez d'autres polices si nécessaire -->
+                        <option value="Helvetica">Helvetica</option>
+                        <option value="Times New Roman">Times New Roman</option>
+                        <option value="Georgia">Georgia</option>
+                        <option value="Courier New">Courier New</option>
+                        <option value="Comic Sans MS">Comic Sans MS</option>
+                        <!-- Ajoutez autant de polices que vous le souhaitez -->
                     </select>
+                    
                     <input type="number" class="font-btn" id="font-size" value="20" min="10" max="100" onchange="handleFontSizeChange()">
                     <button class="font-btn" onclick="alignText('left')"><i class="fa-solid fa-align-left"></i></button>
                     <button class="font-btn" onclick="alignText('center')"><i class="fa-solid fa-align-center"></i></button>
@@ -72,7 +79,7 @@
             <div class="export-btn">
                 <button class="download-btn" onclick="handleDownloadButtonClick()">Télécharger</button>
                 <button class="share-btn">Share</button>
-                <button id="save-meme-btn" onclick="saveMeme()">Save Meme</button>
+                <button class="save-meme-btn" onclick="saveMeme()">Save Meme</button>
             </div>
 
         </div>

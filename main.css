@@ -160,6 +160,14 @@ canvas {
 }
 
 .share-btn {
+    background-color: #46e06a;
+    border-radius: 8px;
+    height: 35px;
+    width: 130px;
+    margin: 10px;
+}
+
+.save-meme-btn {
     background-color: #b6abf5;
     border-radius: 8px;
     height: 35px;

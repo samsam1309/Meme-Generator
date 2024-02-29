@@ -80,25 +80,5 @@ function deleteLine() {
 }
 
 
-function saveMeme() {
-    // Assuming you have a meme object representing the current meme
-    const currentMeme = {
-        // Include relevant meme data, e.g., text, colors, etc.
-        text: document.getElementById('text-input').value,
-        // Add other meme data...
-    };
-
-    // Get saved memes from localStorage or initialize an empty array
-    const savedMemes = JSON.parse(localStorage.getItem('savedMemes')) || [];
-
-    // Add the current meme to the saved memes array
-    savedMemes.push(currentMeme);
-
-    // Save the updated saved memes array back to localStorage
-    localStorage.setItem('savedMemes', JSON.stringify(savedMemes));
-
-    // Optionally, you can display a message or perform other actions after saving
-    alert('Meme saved successfully!');
-}
 
 
