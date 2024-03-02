@@ -49,7 +49,7 @@
     <section id="editor-container">
         <canvas id="editor-canvas" width="500" height="500"></canvas>
         <div class="editor-console">
-            <input type="text" id="text-input" placeholder="Entrez votre texte..." onchange="handleTextInputChange()">
+            <input type="text" id="text-input" placeholder="Enter your text..." onchange="handleTextInputChange()">
             <div class="console-btn">
                 <button id="add-text-btn" onclick="addText()"><i class="fa-solid fa-plus"></i></button>
                 <button id="clear-text-btn" onclick="deleteLine()"><i class="fa-solid fa-trash"></i></button>
@@ -60,11 +60,16 @@
                 <div class="font-size">
                     <button class="font-btn" id="increase-font-btn" onclick="adjustFontSize(4)">Increase Font</button>
                     <button class="font-btn" id="decrease-font-btn" onclick="adjustFontSize(-4)">Decrease Font</button>
-                    <button class="font-btn" id="toggle-border-btn" onclick="toggleBorder()"><i
-                            class="fa-solid fa-ban"></i></button>
+                    <button class="font-btn" id="toggle-border-btn" onclick="toggleBorder()">
+                        <i class="fa-solid fa-ban"></i></button>
+                     
                     <!-- Add these buttons to your HTML where you want them -->
                     <button onclick="handleArrowClick(-10)">Up</button>
                     <button onclick="handleArrowClick(10)">Down</button>
+                    <div class="resize-rotate-btn">
+                        <button onclick="rotateLine('clockwise')"><i class="fa-solid fa-redo"></i></button>
+                        <button onclick="rotateLine('counterclockwise')"><i class="fa-solid fa-undo"></i></button>
+                    </div>
 
                 </div>
 
@@ -91,7 +96,7 @@
             </div>
 
             <div class="export-btn">
-                <button class="download-btn" onclick="handleDownloadButtonClick()">Télécharger</button>
+                <button class="download-btn" onclick="handleDownloadButtonClick()">Donload</button>
                 <button class="share-btn">Share</button>
                 <button class="save-meme-btn" onclick="saveMeme()">Save Meme</button>
             </div>

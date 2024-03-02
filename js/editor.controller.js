@@ -89,4 +89,17 @@ function moveLine(direction) {
 function handleArrowClick(direction) {
     moveLine(direction);
 }
+function rotateLine(direction) {
+    var meme = getMeme();
+    if (meme.selectedLineIdx !== null && meme.lines[meme.selectedLineIdx]) {
+        const rotateStep = 15; 
 
+        if (direction === 'clockwise') {
+            meme.lines[meme.selectedLineIdx].rotation += rotateStep;
+        } else if (direction === 'counterclockwise') {
+            meme.lines[meme.selectedLineIdx].rotation -= rotateStep;
+        }
+
+        renderMeme();
+    }
+}
