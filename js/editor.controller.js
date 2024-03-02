@@ -78,5 +78,15 @@ function deleteLine() {
 }
 
 
+function moveLine(direction) {
+    var meme = getMeme();
+    if (meme.selectedLineIdx !== null && meme.lines[meme.selectedLineIdx]) {
+        meme.lines[meme.selectedLineIdx].yPos += direction;
+        renderMeme();
+    }
+}
 
+function handleArrowClick(direction) {
+    moveLine(direction);
+}
 

@@ -15,38 +15,26 @@ function toggleMode(mode) {
     }
 }
 
-function loadSavedMemes() {
-    const savedMemesContainer = document.getElementById('saved-memes');
-    const savedMemes = JSON.parse(localStorage.getItem('savedMemes')) || [];
-
-    savedMemesContainer.innerHTML = '';
-    savedMemes.forEach((meme, index) => {
-        const memeContainer = document.createElement('div');
-        memeContainer.classList.add('saved-meme-container');
-
-        const imgElement = document.createElement('img');
-        imgElement.src = meme.url;
-        imgElement.alt = `Saved Meme ${index + 1}`;
-        imgElement.classList.add('saved-meme-image');
-        memeContainer.appendChild(imgElement);
-
-        const textElement = document.createElement('p');
-        textElement.textContent = meme.text;
-        memeContainer.appendChild(textElement);
-
-        savedMemesContainer.appendChild(memeContainer);
-    });
+function getRandomImageId() {
+    return Math.floor(Math.random() * 18) + 1;
 }
 
-function saveMeme() {
-    const currentMeme = {
-        text: document.getElementById('text-input').value,
-        url: 'img/your-meme-image.jpg',
-    };
+function getRandomText() {
+    var texts = ["The sprint is on canvas", "Another one", "Are you sure about that?!?"];
+    var randomIndex = Math.floor(Math.random() * texts.length);
+    return texts[randomIndex];
+}
 
-    const savedMemes = JSON.parse(localStorage.getItem('savedMemes')) || [];
-    savedMemes.push(currentMeme);
-    localStorage.setItem('savedMemes', JSON.stringify(savedMemes));
+function generateRandomMeme() {
+    var randomImageId = getRandomImageId();
 
-    alert('Meme saved successfully!');
+    var randomText = getRandomText();
+
+    gMeme.selectedImgId = randomImageId;
+    gMeme.lines = [
+        { txt: randomText, size: 30, color: 'white', yPos: 50 }
+    ];
+    gMeme.selectedLineIdx = 0;
+
+    renderMeme();
 }
