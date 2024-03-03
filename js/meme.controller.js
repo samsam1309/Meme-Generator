@@ -6,12 +6,13 @@ function selectImage(imgId) {
 var gMeme = {
     selectedImgId: null,
     lines: [
-        { txt: '', size: 20, color: 'black', yPos: 50, xPos: 0 },
-        { txt: '', size: 20, color: 'black', yPos: 450, xPos: 0 }
+        { txt: '', size: 20, color: 'black', yPos: 50, xPos: 0, rotation: 0 },
+        { txt: '', size: 20, color: 'black', yPos: 450, xPos: 0, rotation: 0 }
     ],
     selectedLineIdx: 0,
-    showBorder: true 
+    showBorder: true
 };
+
 
 
 function getMeme() {
@@ -36,22 +37,30 @@ function renderMeme() {
         context.drawImage(img, 0, 0, canvas.width, canvas.height);
 
         meme.lines.forEach(function (line, index) {
-            context.font = line.size + 'px ' + line.fontFamily || 'Arial';
+            context.save(); // Sauvegarde l'état du contexte
+            context.translate(canvas.width / 2 + line.xPos, line.yPos); // Translate au point central de la ligne
+            context.rotate(line.rotation); // Applique la rotation
+            context.font = line.size + 'px ' + (line.fontFamily || 'Arial');
             context.fillStyle = line.color;
             context.textAlign = line.align || 'center';
 
             if (line.yPos === 450) {
-                context.fillText(line.txt, canvas.width / 2 + line.xPos, canvas.height - 20);
+                context.fillText(line.txt, 0, canvas.height - 20);
             } else {
-                context.fillText(line.txt, canvas.width / 2 + line.xPos, line.yPos);
+                context.fillText(line.txt, 0, 0);
             }
 
+            context.restore(); // Restaure l'état du contexte
+            
             if (meme.showBorder && meme.selectedLineIdx !== null && meme.selectedLineIdx === index) {
+                // Draw the border after rendering the text
+                context.save();
                 context.strokeStyle = 'white';
                 context.lineWidth = 2;
                 context.setLineDash([5, 3]);
                 context.strokeRect(canvas.width / 4, (line.yPos === 450 ? canvas.height - 20 - line.size : line.yPos - line.size), canvas.width / 2, line.size * 2);
                 context.setLineDash([]);
+                context.restore();
             }
         });
     };
