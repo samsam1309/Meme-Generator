@@ -27,14 +27,16 @@ function getRandomText() {
 
 function generateRandomMeme() {
     var randomImageId = getRandomImageId();
-
     var randomText = getRandomText();
 
-    gMeme.selectedImgId = randomImageId;
-    gMeme.lines = [
-        { txt: randomText, size: 30, color: 'white', yPos: 50 }
-    ];
-    gMeme.selectedLineIdx = 0;
+    // Mettez à jour l'objet gMeme avec les nouvelles valeurs aléatoires
+    gMeme = {
+        selectedImgId: randomImageId,
+        lines: [
+            { txt: randomText, size: 30, color: 'white', yPos: 50,xPos: 0 }
+        ],
+        selectedLineIdx: 0
+    };
 
     renderMeme();
 }

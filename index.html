@@ -13,7 +13,7 @@
         <h1 class="logo" onclick="toggleMode('gallery')">Meme Generator <i class="fa-solid fa-gamepad"></i></h1>
         <button id="gallery-btn" class="header-btn" onclick="toggleMode('gallery')">Gallery</button>
         <button class="header-btn" onclick="toggleMode('memes')">Memes</button>
-        <button class="header-btn" onclick="generateRandomMeme()">Generate Random Meme</button>
+        <button class="header-btn" onclick="generateRandomMeme()">Random Meme</button>
     </header>
 
     <section id="gallery">
@@ -56,21 +56,18 @@
                 <button id=select-text-btn onclick="toggleLine()"><i class="fa-solid fa-arrows-up-down"></i></button>
             </div>
             <div class="adjust-btn">
-                <input type="color" id="font-color-picker" value="#ffffff" onclick="handleColorChange()">
                 <div class="font-size">
+                    <input type="color" id="font-color-picker" value="#ffffff" oninput="handleColorChange()">
                     <button class="font-btn" id="increase-font-btn" onclick="adjustFontSize(4)">Increase Font</button>
                     <button class="font-btn" id="decrease-font-btn" onclick="adjustFontSize(-4)">Decrease Font</button>
                     <button class="font-btn" id="toggle-border-btn" onclick="toggleBorder()">
                         <i class="fa-solid fa-ban"></i></button>
-                     
-                    <!-- Add these buttons to your HTML where you want them -->
+                </div>
+                <div class="resize-rotate-btn">
                     <button onclick="handleArrowClick(-10)">Up</button>
                     <button onclick="handleArrowClick(10)">Down</button>
-                    <div class="resize-rotate-btn">
-                        <button onclick="rotateLine('clockwise')"><i class="fa-solid fa-redo"></i></button>
-                        <button onclick="rotateLine('counterclockwise')"><i class="fa-solid fa-undo"></i></button>
-                    </div>
-
+                    <button onclick="rotateLine('clockwise')"><i class="fa-solid fa-redo"></i></button>
+                    <button onclick="rotateLine('counterclockwise')"><i class="fa-solid fa-undo"></i></button>
                 </div>
 
                 <div class="font-controls">
@@ -97,7 +94,7 @@
 
             <div class="export-btn">
                 <button class="download-btn" onclick="handleDownloadButtonClick()">Donload</button>
-                <button class="share-btn">Share</button>
+                <button class="share-btn" onclick="shareOnFacebook()">Share</button>
                 <button class="save-meme-btn" onclick="saveMeme()">Save Meme</button>
             </div>
 

@@ -1,13 +1,14 @@
 function handleColorChange() {
     var fontColorPicker = document.getElementById('font-color-picker');
     var selectedColor = fontColorPicker.value;
-    
+
     var meme = getMeme();
     if (meme.selectedLineIdx !== null && meme.lines[meme.selectedLineIdx]) {
         meme.lines[meme.selectedLineIdx].color = selectedColor;
         renderMeme();
     }
 }
+
 
 function increaseFontSize() {
     adjustFontSize(2); 

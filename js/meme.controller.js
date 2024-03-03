@@ -6,8 +6,8 @@ function selectImage(imgId) {
 var gMeme = {
     selectedImgId: null,
     lines: [
-        { txt: '', size: 20, color: 'black', yPos: 50 },
-        { txt: '', size: 20, color: 'black', yPos: 450 } 
+        { txt: '', size: 20, color: 'black', yPos: 50, xPos: 0 },
+        { txt: '', size: 20, color: 'black', yPos: 450, xPos: 0 }
     ],
     selectedLineIdx: 0,
     showBorder: true 
@@ -41,9 +41,9 @@ function renderMeme() {
             context.textAlign = line.align || 'center';
 
             if (line.yPos === 450) {
-                context.fillText(line.txt, canvas.width / 2, canvas.height - 20);
+                context.fillText(line.txt, canvas.width / 2 + line.xPos, canvas.height - 20);
             } else {
-                context.fillText(line.txt, canvas.width / 2, line.yPos);
+                context.fillText(line.txt, canvas.width / 2 + line.xPos, line.yPos);
             }
 
             if (meme.showBorder && meme.selectedLineIdx !== null && meme.selectedLineIdx === index) {
@@ -105,36 +105,4 @@ function addText() {
     updateText();
 }
 
-
-var canvas = document.getElementById('editor-canvas');
-canvas.addEventListener('click', handleCanvasClick);
-
-
-function handleCanvasClick(event) {
-    var meme = getMeme();
-    var canvas = document.getElementById('editor-canvas');
-    var canvasRect = canvas.getBoundingClientRect();
-    var clickX = event.clientX - canvasRect.left;
-    var clickY = event.clientY - canvasRect.top;
-
-    for (var i = 0; i < meme.lines.length; i++) {
-        var line = meme.lines[i];
-        var textWidth = context.measureText(line.txt).width;
-        var textHeight = line.size;
-
-        if (
-            clickX >= canvas.width / 2 - textWidth / 2 &&
-            clickX <= canvas.width / 2 + textWidth / 2 &&
-            clickY >= line.yPos - textHeight &&
-            clickY <= line.yPos
-        ) {
-            meme.selectedLineIdx = i;
-            renderMeme();
-            return;
-        }
-    }
-
-    meme.selectedLineIdx = null;
-    renderMeme();
-}
 
